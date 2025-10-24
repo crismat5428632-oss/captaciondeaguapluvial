@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyecto comunitario de captación de agua pluvial en Zinacantepec. Conoce los problemas, soluciones y cómo participar." />
+  <meta name="keywords" content="agua pluvial, captación, Zinacantepec, comunidad, sostenibilidad, medio ambiente" />
+  <meta name="author" content="Cristian y Diego" />
+  <meta name="theme-color" content="#08535B" />
+  <link rel="icon" type="image" href="icono.jpg" />
+  <title>Captación de Agua en Zinacantepec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo del proyecto" />
+    </div>
+    <h1>Captación de Agua en Zinacantepec</h1>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#estadisticas">Datos</a></li>
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero fade-in">
+      <h2>El agua vale más de lo que imaginamos</h2>
+      <p>En Zinacantepec, cada gota cuenta. Este proyecto busca crear conciencia sobre el valor del agua de lluvia y demostrar cómo, con pequeñas acciones, podemos recolectarla y aprovecharla.</p>
+      <a href="#soluciones" class="boton">Conoce más</a>
+    </section>
+
+    <section id="estadisticas" class="section fade-in">
+      <h2>Datos que reflejan la realidad</h2>
+      <div class="contenedor-estadisticas">
+        <article><h3>70%</h3><p>de familias enfrentan escasez de agua hasta por semana y media.</p></article>
+        <article><h3>12,000 L</h3><p>de agua pluvial se desperdician cada temporada por vivienda.</p></article>
+        <article><h3>30–50%</h3><p>de ahorro posible con sistemas de captación eficientes.</p></article>
+        <article><h3>1,700,000 L/año</h3><p>podrían captarse con el proyecto “Colectivos de Agua de Lluvia”.</p></article>
+      </div>
+    </section>
+
+    <section id="problema" class="section fade-in">
+      <h2>¿Cuál es el problema?</h2>
+      <p>El rápido crecimiento urbano, la falta de mantenimiento y el cambio climático agravan la escasez de agua en la región.</p>
+      <ul>
+        <li><strong>OPDAPAS (2023):</strong> muchas familias solo reciben agua algunos días a la semana.</li>
+        <li><strong>CONAGUA:</strong> reducción del 61% en las lluvias comparado con años anteriores.</li>
+      </ul>
+    </section>
+
+    <section id="soluciones" class="section fondo-secundario fade-in">
+      <h2>Propuestas para cambiar la situación</h2>
+      <div class="contenedor-tarjetas">
+        <div class="tarjeta-solucion"><h3>Educación y conciencia</h3><p>Fomentar el uso responsable del agua y evitar la contaminación.</p></div>
+        <div class="tarjeta-solucion"><h3>Captación pluvial</h3><p>Instalar sistemas de recolección de lluvia en hogares y escuelas.</p></div>
+        <div class="tarjeta-solucion"><h3>Infraestructura</h3><p>Rehabilitar colectores, pozos y sistemas de drenaje.</p></div>
+      </div>
+    </section>
+     <section id="faq" class="section fade-in">
+  <h2>💧 Preguntas Frecuentes</h2>
+  <div class="contenedor-tarjetas">
+    <div class="tarjeta-solucion tooltip" data-info="El costo varía según tamaño y componentes; para una casa pequeña puede ir desde económico hasta sistemas completos con tratamiento." onclick="abrirModal(1)"><h3>💸 ¿Cuánto cuesta instalar un sistema doméstico básico?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Depende de la precipitación anual y del tamaño de la cubierta; en zonas secas se recomienda mayor almacenamiento y combinar fuentes alternativas." onclick="abrirModal(2)"><h3>🌦 ¿Funciona en zonas secas?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Para uso en consumo directo se necesita tratamiento y análisis de calidad. Para riego, limpieza y descargas suele requerirse menos tratamiento." onclick="abrirModal(3)"><h3>🚰 ¿Puedo usar el agua recolectada para consumo humano?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Revisa normativas municipales o estatales sobre almacenamiento y uso; algunos lugares requieren permisos sanitarios si se usa para consumo." onclick="abrirModal(4)"><h3>📜 ¿Qué permisos o normativas debo considerar?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Limpieza profunda anual y revisión trimestral; si detectas turbidez u olores, limpia cuanto antes." onclick="abrirModal(5)"><h3>🧹 ¿Cada cuánto debo limpiar el tanque?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Busca reseñas, verifica instalaciones previas, solicita referencias y confirma garantías por escrito." onclick="abrirModal(6)"><h3>🔍 ¿Cómo seleccionar un proveedor confiable?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Cierra el suministro si es posible, evita usar la sección afectada y contacta a un técnico para reparación." onclick="abrirModal(7)"><h3>⚠️ ¿Qué hago si detecto fugas o corrosión?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Se pueden instalar sensores y bombas automáticas para optimizar la captación y distribución." onclick="abrirModal(8)"><h3>🤖 ¿Se puede automatizar la recolección de agua pluvial?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Los filtros deben revisarse cada 2–3 meses, limpiarse de residuos y reemplazarse según recomendación del fabricante." onclick="abrirModal(9)"><h3>🛠 ¿Qué mantenimiento requieren los filtros?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Depende del tamaño de la cubierta y la precipitación anual; un techo de 100 m² puede recolectar aprox. 50,000 L/año." onclick="abrirModal(10)"><h3>📏 ¿Qué volumen de agua se puede recolectar en promedio?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Mediante sistemas de mezcla con válvulas y tratamiento adecuado, se puede usar de forma segura para ciertos usos domésticos." onclick="abrirModal(11)"><h3>💧 ¿Es posible combinar agua de lluvia con agua potable?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Se requieren tanques en azoteas y bombas de presión para distribuir el agua correctamente en todos los niveles." onclick="abrirModal(12)"><h3>🏢 ¿Se puede usar en edificios de varios pisos?</h3></div>
+    
+    <div class="tarjeta-solucion tooltip" data-info="Se recomienda revisar instalaciones eléctricas, bombas y válvulas regularmente; evita manipular sin conocimiento técnico." onclick="abrirModal(13)"><h3>⚡ ¿Qué cuidados eléctricos debo tener en el sistema?</h3></div>
+  </div>
+</section>
+
+<!-- MODALES -->
+<div id="modal1" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(1)">&times;</span><h3>💸 ¿Cuánto cuesta instalar un sistema doméstico básico?</h3><p>El costo varía según tamaño y componentes; para una casa pequeña puede ir desde económico hasta sistemas completos con tratamiento.</p></div></div>
+
+<div id="modal2" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(2)">&times;</span><h3>🌦 ¿Funciona en zonas secas?</h3><p>Depende de la precipitación anual y del tamaño de la cubierta; en zonas secas se recomienda mayor almacenamiento y combinar fuentes alternativas.</p></div></div>
+
+<div id="modal3" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(3)">&times;</span><h3>🚰 ¿Puedo usar el agua recolectada para consumo humano?</h3><p>Para uso en consumo directo se necesita tratamiento y análisis de calidad. Para riego, limpieza y descargas suele requerirse menos tratamiento.</p></div></div>
+
+<div id="modal4" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(4)">&times;</span><h3>📜 ¿Qué permisos o normativas debo considerar?</h3><p>Revisa normativas municipales o estatales sobre almacenamiento y uso; algunos lugares requieren permisos sanitarios si se usa para consumo.</p></div></div>
+
+<div id="modal5" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(5)">&times;</span><h3>🧹 ¿Cada cuánto debo limpiar el tanque?</h3><p>Limpieza profunda anual y revisión trimestral; si detectas turbidez u olores, limpia cuanto antes.</p></div></div>
+
+<div id="modal6" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(6)">&times;</span><h3>🔍 ¿Cómo seleccionar un proveedor confiable?</h3><p>Busca reseñas, verifica instalaciones previas, solicita referencias y confirma garantías por escrito.</p></div></div>
+
+<div id="modal7" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(7)">&times;</span><h3>⚠️ ¿Qué hago si detecto fugas o corrosión?</h3><p>Cierra el suministro si es posible, evita usar la sección afectada y contacta a un técnico para reparación.</p></div></div>
+
+<div id="modal8" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(8)">&times;</span><h3>🤖 ¿Se puede automatizar la recolección de agua pluvial?</h3><p>Se pueden instalar sensores y bombas automáticas para optimizar la captación y distribución.</p></div></div>
+
+<div id="modal9" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(9)">&times;</span><h3>🛠 ¿Qué mantenimiento requieren los filtros?</h3><p>Los filtros deben revisarse cada 2–3 meses, limpiarse de residuos y reemplazarse según recomendación del fabricante.</p></div></div>
+
+<div id="modal10" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(10)">&times;</span><h3>📏 ¿Qué volumen de agua se puede recolectar en promedio?</h3><p>Depende del tamaño de la cubierta y la precipitación anual; un techo de 100 m² puede recolectar aprox. 50,000 L/año.</p></div></div>
+
+<div id="modal11" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(11)">&times;</span><h3>💧 ¿Es posible combinar agua de lluvia con agua potable?</h3><p>Mediante sistemas de mezcla con válvulas y tratamiento adecuado, se puede usar de forma segura para ciertos usos domésticos.</p></div></div>
+
+<div id="modal12" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(12)">&times;</span><h3>🏢 ¿Se puede usar en edificios de varios pisos?</h3><p>Se requieren tanques en azoteas y bombas de presión para distribuir el agua correctamente en todos los niveles.</p></div></div>
+
+<div id="modal13" class="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal(13)">&times;</span><h3>⚡ ¿Qué cuidados eléctricos debo tener en el sistema?</h3><p>Se recomienda revisar instalaciones eléctricas, bombas y válvulas regularmente; evita manipular sin conocimiento técnico.</p></div></div>
+
+
+    <section id="contacto" class="section fade-in">
+      <h2>Contáctanos</h2>
+      <form id="contactForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 — Proyecto de Captación de Agua en Zinacantepec.</p>
+    <p>Desarrollado por Cristian y Diego 💧</p>
+  </footer>
+
+  <script src="hamburguesa.js"></script>
+  <script src="calculadora.js"></script>
+  <script src="mapa.js"></script>
+</body>
+</html>
+
+

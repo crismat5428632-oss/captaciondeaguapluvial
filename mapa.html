@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo - Zonas y Comunidades</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+
+        .info-panel {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .location-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .location-item {
+            padding: 12px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+
+        .location-item.comunidad {
+            border-left-color: #e74c3c;
+        }
+
+        .location-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: #e3f2fd;
+        }
+
+        .location-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .location-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            color: white;
+        }
+
+        .zona-type {
+            background-color: #3498db;
+        }
+
+        .comunidad-type {
+            background-color: #e74c3c;
+        }
+
+        .location-desc {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .zona-color {
+            background-color: #3498db;
+        }
+
+        .comunidad-color {
+            background-color: #e74c3c;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .info-panel {
+                flex: 1;
+            }
+
+            #map {
+                height: 400px;
+            }
+        }
+
+        .leaflet-popup-content {
+            width: 280px !important;
+        }
+
+        .popup-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+
+        .popup-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .popup-desc {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #555;
+        }
+
+        .selected {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Mapa Interactivo de Zonas y Comunidades</h1>
+        <p class="subtitle">Haz clic en los marcadores del mapa o en las ubicaciones de la lista para ver información detallada</p>
+    </header>
+
+    <div class="content">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="info-panel">
+            <h2 class="panel-title">Ubicaciones</h2>
+            <div class="location-list" id="locationList"></div>
+
+            <div class="legend">
+                <div class="legend-title">Leyenda</div>
+                <div class="legend-item">
+                    <div class="legend-color zona-color"></div> Zona
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color comunidad-color"></div> Comunidad
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mapa interactivo desarrollado para mostrar información sobre zonas y comunidades</p>
+    </footer>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const locations = [
+        { nombre: "San Cristobal Tecolit", coords: [19.26831, -99.74297], descripcion: "En Sitios de pronóstico del tiempo, actualmente se reporta 0 mm de lluvia para el día en curso", tipo: "Zona" },
+        { nombre: "La Joya", coords: [19.276, -99.759], descripcion: "“Alrededor de 50 vecinos” resultaron afectados por inundaciones tras una lluvia fuerte que ocurrió en cuestión de minutos", tipo: "Comunidad" },
+        { nombre: "Emiliano Zapata", coords: [19.2836, -99.7351], descripcion: "La precipitación media anual para Zinacantepec se sitúa en un rango aproximado de 700 a 2 000 mm según datos técnicos para el municipio.", tipo: "Comunidad" },
+        { nombre: "Ojuelos", coords: [19.28, -99.73], descripcion: "La Laguna de Ojuelos ha quedado prácticamente seca, lo cual se asocia con “falta de lluvias” o precipitaciones insuficientes alrededor del área.", tipo: "Zona" },
+        { nombre: "Barrio El Calvario", coords: [19.2843, -99.7339], descripcion: "Se están haciendo obras de pavimentación y drenaje, pero no encontré un dato específico de precipitación para ese barrio.", tipo: "Comunidad" }
+    ];
+
+    const map = L.map('map').setView([19.275, -99.745], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const zonaIcon = L.divIcon({
+        html: '<i class="fas fa-map-marker-alt" style="color: #3498db; font-size: 24px;"></i>',
+        className: 'custom-div-icon',
+        iconSize: [24, 24],
+        iconAnchor: [12, 24]
+    });
+
+    const comunidadIcon = L.divIcon({
+        html: '<i class="fas fa-home" style="color: #e74c3c; font-size: 24px;"></i>',
+        className: 'custom-div-icon',
+        iconSize: [24, 24],
+        iconAnchor: [12, 24]
+    });
+
+    const markers = [];
+
+    locations.forEach((location, index) => {
+        const icon = location.tipo === "Zona" ? zonaIcon : comunidadIcon;
+        const marker = L.marker(location.coords, { icon }).addTo(map);
+
+        const popupContent = `
+            <div class="popup-title">${location.nombre}</div>
+            <div class="popup-type ${location.tipo === 'Zona' ? 'zona-type' : 'comunidad-type'}">${location.tipo}</div>
+            <div class="popup-desc">${location.descripcion}</div>
+        `;
+        marker.bindPopup(popupContent);
+        markers.push(marker);
+
+        marker.on('popupopen', function() {
+            highlightLocationItem(index);
+        });
+    });
+
+    function highlightLocationItem(index) {
+        const items = document.querySelectorAll('.location-item');
+        items.forEach(item => item.classList.remove('selected'));
+        items[index].classList.add('selected');
+    }
+
+    const locationList = document.getElementById('locationList');
+    locations.forEach((location, index) => {
+        const item = document.createElement('div');
+        item.className = `location-item ${location.tipo.toLowerCase()}`;
+        item.innerHTML = `
+            <div class="location-name">${location.nombre}</div>
+            <div class="location-type ${location.tipo === 'Zona' ? 'zona-type' : 'comunidad-type'}">${location.tipo}</div>
+            <div class="location-desc">${location.descripcion}</div>
+        `;
+        item.addEventListener('click', () => {
+            markers[index].openPopup();
+            map.setView(location.coords, 14);
+            highlightLocationItem(index);
+        });
+        locationList.appendChild(item);
+    });
+
+    const legend = L.control({position: 'bottomright'});
+    legend.onAdd = function(map) {
+        const div = L.DomUtil.create('div', 'info legend');
+        div.style.backgroundColor = 'white';
+        div.style.padding = '10px';
+        div.style.borderRadius = '5px';
+        div.style.boxShadow = '0 0 15px rgba(0,0,0,0.2)';
+        div.innerHTML = `
+            <h4 style="margin:0 0 10px 0; color: #333;">Leyenda</h4>
+            <div style="display:flex; align-items:center; margin-bottom:5px;">
+                <i class="fas fa-map-marker-alt" style="color: #3498db; margin-right:5px;"></i> Zona
+            </div>
+            <div style="display:flex; align-items:center;">
+                <i class="fas fa-home" style="color: #e74c3c; margin-right:5px;"></i> Comunidad
+            </div>
+        `;
+        return div;
+    };
+    legend.addTo(map);
+</script>
+
+</body>
+</html>

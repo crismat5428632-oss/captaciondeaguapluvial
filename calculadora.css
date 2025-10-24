@@ -1,0 +1,212 @@
+/* ===================== RESET & BASE ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(120deg, #e0f7fa, #f1f8e9);
+    color: #333;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ===================== HEADER ===================== */
+header {
+    background-color: #00796b;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+header nav .btn-regresar {
+    background-color: #004d40;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+header nav .btn-regresar:hover {
+    background-color: #00796b;
+}
+
+/* ===================== MAIN CONTAINER ===================== */
+main .container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* ===================== TITULO PRINCIPAL ===================== */
+.main-header h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #00796b;
+    margin-bottom: 8px;
+}
+
+.main-header .subtitle {
+    font-size: 1rem;
+    text-align: center;
+    color: #004d40;
+    margin-bottom: 25px;
+}
+
+/* ===================== CALCULATOR CARD ===================== */
+.calculator-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #00796b;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #b2dfdb;
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #004d40;
+    box-shadow: 0 0 6px rgba(0,77,64,0.2);
+}
+
+.input-help {
+    font-size: 0.8rem;
+    color: #00796b;
+    margin-top: 4px;
+}
+
+/* ===================== BOTONES ===================== */
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-calculate {
+    background-color: #00796b;
+}
+
+.btn-calculate:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    background-color: #c62828;
+}
+
+.btn-reset:hover {
+    background-color: #8e0000;
+    transform: translateY(-2px);
+}
+
+/* ===================== RESULTADOS ===================== */
+.result-card {
+    background-color: #e0f2f1;
+    border-left: 5px solid #00796b;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 25px;
+    font-size: 0.95rem;
+}
+
+/* ===================== GRÁFICA ===================== */
+.chart-card {
+    margin-top: 25px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+    text-align: center;
+    padding: 25px 0;
+    background-color: #00796b;
+    color: white;
+    margin-top: 30px;
+    border-radius: 0 0 16px 16px;
+    font-size: 0.9rem;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .calculator-card {
+        padding: 20px 15px;
+    }
+
+    .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .main-header .subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
